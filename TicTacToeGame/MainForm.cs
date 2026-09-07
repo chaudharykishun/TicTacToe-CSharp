@@ -72,6 +72,21 @@ namespace TicTacToeGame
                 return;
             }
 
+            if (game.IsDraw)
+            {
+                lblStatus.Text = "It's a Draw!";
+
+                DisableBoard();
+
+                MessageBox.Show(
+                    "The game ended in a draw.",
+                    "Game Over",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
             UpdateStatus();
         }
 

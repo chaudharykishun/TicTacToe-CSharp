@@ -17,6 +17,8 @@
 
         public bool IsGameOver { get; private set; }
 
+        public bool IsDraw { get; private set; }
+
         public Game()
         {
             board = new Player[3, 3];
@@ -55,6 +57,13 @@
             if (CheckWinner(CurrentPlayer))
             {
                 Winner = CurrentPlayer;
+                IsGameOver = true;
+                return true;
+            }
+
+            if (CheckDraw())
+            {
+                IsDraw = true;
                 IsGameOver = true;
                 return true;
             }
@@ -107,6 +116,22 @@
             return false;
         }
 
+        private bool CheckDraw()
+        {
+            for (int row = 0; row < 3; row++)
+            {
+                for (int column = 0; column < 3; column++)
+                {
+                    if (board[row, column] == Player.None)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         private void SwitchPlayer()
         {
             if (CurrentPlayer == Player.X)
@@ -132,6 +157,7 @@
             CurrentPlayer = Player.X;
             Winner = Player.None;
             IsGameOver = false;
+            IsDraw = false;
         }
     }
 }
