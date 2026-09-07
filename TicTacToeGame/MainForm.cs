@@ -20,6 +20,8 @@ namespace TicTacToeGame
 
             ConnectBoardButtons();
 
+            btnNewGame.Click += BtnNewGame_Click;
+
             UpdateStatus();
         }
 
@@ -106,5 +108,22 @@ namespace TicTacToeGame
                 }
             }
         }
+
+        private void BtnNewGame_Click(object? sender, EventArgs e)
+        {
+            game.ResetGame();
+
+            for (int row = 0; row < 3; row++)
+            {
+                for (int column = 0; column < 3; column++)
+                {
+                    boardButtons[row, column].Text = string.Empty;
+                    boardButtons[row, column].Enabled = true;
+                }
+            }
+
+            UpdateStatus();
+        }
+
     }
 }
