@@ -2,24 +2,67 @@ namespace TicTacToeGame
 {
     public partial class MainForm : Form
     {
+        private readonly Game game;
+        private readonly Button[,] boardButtons;
+
         public MainForm()
         {
             InitializeComponent();
+
+            game = new Game();
+
+            boardButtons = new Button[,]
+            {
+                { btn00, btn01, btn02 },
+                { btn10, btn11, btn12 },
+                { btn20, btn21, btn22 }
+            };
+
+            ConnectBoardButtons();
+
+            UpdateStatus();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void ConnectBoardButtons()
         {
+            for (int row = 0; row < 3; row++)
+            {
+                for (int column = 0; column < 3; column++)
+                {
+                    int selectedRow = row;
+                    int selectedColumn = column;
 
+                    boardButtons[row, column].Click +=
+                        (sender, e) => HandleMove(selectedRow, selectedColumn);
+                }
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void HandleMove(int row, int column)
         {
+            Player playerMakingMove = game.CurrentPlayer;
 
+            bool validMove = game.MakeMove(row, column);
+
+            if (!validMove)
+            {
+                MessageBox.Show(
+                    "That square is already occupied. Choose another square.",
+                    "Invalid Move",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
+            boardButtons[row, column].Text = playerMakingMove.ToString();
+
+            UpdateStatus();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void UpdateStatus()
         {
-
+            lblStatus.Text = $"Player {game.CurrentPlayer}'s Turn";
         }
     }
 }

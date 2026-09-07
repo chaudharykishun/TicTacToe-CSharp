@@ -98,7 +98,6 @@
             btn00.TabIndex = 0;
             btn00.TabStop = false;
             btn00.UseVisualStyleBackColor = true;
-            btn00.Click += button1_Click;
             // 
             // btn01
             // 
@@ -132,7 +131,6 @@
             btn10.TabIndex = 3;
             btn10.TabStop = false;
             btn10.UseVisualStyleBackColor = true;
-            btn10.Click += button1_Click_1;
             // 
             // btn11
             // 
@@ -213,7 +211,6 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Tic Tac Toe";
-            Load += MainForm_Load;
             gameBoardPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
