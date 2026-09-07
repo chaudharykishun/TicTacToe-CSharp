@@ -48,7 +48,7 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 22F, FontStyle.Bold);
-            lblTitle.Location = new Point(101, 19);
+            lblTitle.Location = new Point(98, 25);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(212, 50);
             lblTitle.TabIndex = 0;
@@ -58,7 +58,7 @@
             // 
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblStatus.Location = new Point(124, 78);
+            lblStatus.Location = new Point(122, 91);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(153, 28);
             lblStatus.TabIndex = 1;
