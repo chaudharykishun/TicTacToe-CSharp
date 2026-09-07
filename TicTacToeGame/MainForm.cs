@@ -57,12 +57,39 @@ namespace TicTacToeGame
 
             boardButtons[row, column].Text = playerMakingMove.ToString();
 
+            if (game.IsGameOver && game.Winner != Player.None)
+            {
+                lblStatus.Text = $"Player {game.Winner} Wins!";
+
+                DisableBoard();
+
+                MessageBox.Show(
+                    $"Player {game.Winner} wins the game!",
+                    "Game Over",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
             UpdateStatus();
         }
 
         private void UpdateStatus()
         {
             lblStatus.Text = $"Player {game.CurrentPlayer}'s Turn";
+        }
+
+
+        private void DisableBoard()
+        {
+            for (int row = 0; row < 3; row++)
+            {
+                for (int column = 0; column < 3; column++)
+                {
+                    boardButtons[row, column].Enabled = false;
+                }
+            }
         }
     }
 }
